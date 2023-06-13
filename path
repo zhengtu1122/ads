@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
+ // Update the actor_id, private_key, and public_key, last_refreshed_at
+  let incorrect_persons = person
+    .filter(actor_id.like("http://changeme%"))
+    .filter(local.eq(true))
+    .load::<Person>(conn)
+    .await?;
+
+  for cperson in &incorrect_persons {
+    let keypair = generate_actor_keypair()?;
+
