@@ -30,8 +30,6 @@ class PlainDataLoader():
                 for poem in data:
                     body += poem[tag]
             return body
-        # a dir, probably with a skip list
-        subpaths = os.listdir(full_path)
         for filename in subpaths:
             if filename in configs["excludes"]:
                 continue
